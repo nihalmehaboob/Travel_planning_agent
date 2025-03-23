@@ -6,13 +6,17 @@ from crewai import Agent, Task
 from langchain.tools import tool
 from unstructured.partition.html import partition_html
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 class BrowserTools():
 
   @tool("Scrape website content")
   def scrape_and_summarize_website(website):
     """Useful to scrape and summarize a website content"""
-    url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
+    url = f"https://chrome.browserless.io/content?token={os.getenv('BROWSERLESS_API_KEY')}"
     payload = json.dumps({"url": website})
     headers = {'cache-control': 'no-cache', 'content-type': 'application/json'}
     response = requests.request("POST", url, headers=headers, data=payload)
