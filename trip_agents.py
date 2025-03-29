@@ -5,7 +5,7 @@ from langchain_ollama import OllamaLLM
 from tools.browser_tools import BrowserTools
 from tools.calculator_tools import CalculatorTools
 from tools.search_tools import SearchTools
-
+# the
 search_tool = SearchTools() 
 class TripAgents():
 
